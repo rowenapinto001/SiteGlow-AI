@@ -693,9 +693,9 @@ textarea::placeholder {
   margin-bottom: 8px;
 }
 
-.inline-result-panel .panel-header h2 {
-  margin-top: 5px;
-  font-size: 20px;
+.inline-result-panel .eyebrow {
+  padding: 5px 9px;
+  font-size: 13px;
 }
 
 .workspace.has-result .capture-panel {
@@ -757,11 +757,6 @@ textarea::placeholder {
 
 .workspace.has-result .inline-result-panel .panel-header {
   margin-bottom: 6px;
-}
-
-.workspace.has-result .inline-result-panel .panel-header h2 {
-  margin-top: 3px;
-  font-size: 17px;
 }
 
 .workspace.has-result .button-row.compact button {

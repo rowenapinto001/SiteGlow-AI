@@ -175,7 +175,6 @@ export default function App() {
                 <div className="panel-header">
                   <div>
                     <p className="eyebrow">Result</p>
-                    <h2>{afterDataUrl ? 'Before / After' : capture ? 'Captured Before' : 'Before / After'}</h2>
                   </div>
                   <div className="button-row compact">
                     <button onClick={() => download('before')} disabled={!capture} title="Download before screenshot">
@@ -196,7 +195,7 @@ export default function App() {
                 ) : (
                   <div className="result-empty">
                     <div>
-                      <strong>{stage === 'capturing' ? 'Capturing Before' : 'Before / After'}</strong>
+                      <strong>{stage === 'capturing' ? 'Capturing Before' : 'Generating redesign'}</strong>
                       <span>
                         {stage === 'capturing'
                           ? 'Stitching the full-page screenshot.'
