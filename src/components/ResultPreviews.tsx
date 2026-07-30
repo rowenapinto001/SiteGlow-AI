@@ -38,13 +38,15 @@ function PreviewPlaceholder({ isGenerating }: { isGenerating: boolean }) {
   return (
     <section className="preview-card" aria-label="After preview">
       <h3>After</h3>
-      <div className="preview-placeholder">
-        <strong>{isGenerating ? 'Generating After' : 'After will appear here'}</strong>
-        <span>
-          {isGenerating
-            ? 'Creating the redesign concept now.'
-            : 'Run Capture & Generate to create the redesign.'}
-        </span>
+      <div className="preview-frame preview-frame-empty">
+        <div className="preview-placeholder">
+          <strong>{isGenerating ? 'Generating After' : 'After screen will appear here'}</strong>
+          <span>
+            {isGenerating
+              ? 'Creating the redesign concept now.'
+              : 'Run Capture & Generate to create the redesign.'}
+          </span>
+        </div>
       </div>
     </section>
   );
