@@ -18,7 +18,7 @@ const emptyConfig: PublicConfig = {
 };
 
 export default function App() {
-  const [view, setView] = useState<View>('config');
+  const [view, setView] = useState<View>('redesign');
   const [config, setConfig] = useState<PublicConfig>(emptyConfig);
   const [url, setUrl] = useState('');
   const [instructions, setInstructions] = useState('');
