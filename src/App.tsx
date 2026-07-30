@@ -111,6 +111,9 @@ export default function App() {
     }
   }
 
+  const isConfigView = view === 'config';
+  const topbarActionLabel = isConfigView ? 'Back to capture' : 'Open AI settings';
+
   return (
     <main className="app-shell">
       <header className="topbar">
@@ -119,20 +122,15 @@ export default function App() {
           <p>Website redesigns made simple.</p>
         </div>
         <div className="topbar-actions">
-          <button title="Open AI settings" onClick={() => setView('config')} aria-label="Open AI settings">
-            <Settings size={18} />
+          <button
+            title={topbarActionLabel}
+            onClick={() => setView(isConfigView ? 'capture' : 'config')}
+            aria-label={topbarActionLabel}
+          >
+            {isConfigView ? <WandSparkles size={18} /> : <Settings size={18} />}
           </button>
         </div>
       </header>
-
-      <nav className="tabs" aria-label="SiteGlow views">
-        <button className={view === 'capture' ? 'active' : ''} onClick={() => setView('capture')}>
-          <WandSparkles size={18} /> Capture
-        </button>
-        <button className={view === 'config' ? 'active' : ''} onClick={() => setView('config')}>
-          <Settings size={18} /> AI
-        </button>
-      </nav>
 
       {view === 'config' ? (
         <AiConfig config={config} onConfigChange={setConfig} />

@@ -31,8 +31,8 @@ For local development, use the built `dist` folder when testing Chrome extension
 
 ## Usage
 
-1. Open SiteGlow AI. The Capture tab is the default starting point.
-2. Open the AI tab when credentials need to be added or changed.
+1. Open SiteGlow AI. Capture is the default starting point.
+2. Use the top-right settings button when credentials need to be added or changed.
 3. Enter the Cloudflare Workers AI credentials.
 4. Choose session-only or persistent local storage.
 5. Confirm the image model, then Validate & Save.
@@ -50,7 +50,7 @@ Cloudflare Workers AI provides a daily free allocation on the Workers Free plan.
 4. Choose **Use REST API**.
 5. Copy your **Account ID**.
 6. Create a Workers AI API token.
-7. Paste the Account ID and token into **SiteGlow AI → AI**.
+7. Paste the Account ID and token into **SiteGlow AI → Settings**.
 8. Keep the default model `@cf/runwayml/stable-diffusion-v1-5-img2img`, then click **Validate & Save**.
 
 If you create a custom token manually, give it Workers AI permissions. Keep the token private and do not screenshot or share it.

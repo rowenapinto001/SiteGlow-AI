@@ -55,7 +55,6 @@ select {
 }
 
 button svg,
-.tabs svg,
 .topbar-actions svg,
 .setting-icon svg,
 .panel-accent svg,
@@ -125,7 +124,7 @@ button.danger {
   margin: 0 auto;
   padding: 12px;
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
@@ -167,7 +166,6 @@ button.danger {
 }
 
 .topbar,
-.tabs,
 .workspace,
 .config-panel {
   position: relative;
@@ -217,7 +215,6 @@ button.danger {
 
 .topbar-actions,
 .button-row,
-.tabs,
 .comparison-toolbar,
 .capture-meta {
   display: flex;
@@ -228,44 +225,6 @@ button.danger {
 
 .topbar-actions {
   padding-top: 4px;
-}
-
-.tabs {
-  border-bottom: 1px solid rgba(233, 157, 150, 0.42);
-  margin-bottom: 12px;
-  gap: 8px;
-  overflow-x: hidden;
-}
-
-.tabs button {
-  min-height: 44px;
-  min-width: 92px;
-  border-color: transparent;
-  border-radius: 12px 12px 0 0;
-  background: transparent;
-  color: #6f6870;
-  padding: 9px 13px;
-  font-size: 14px;
-  box-shadow: none;
-  position: relative;
-}
-
-.tabs button.active {
-  color: var(--accent);
-  background: rgba(255, 255, 255, 0.9);
-  border-color: #fff0ee;
-  box-shadow: 0 14px 34px rgba(179, 48, 49, 0.1);
-}
-
-.tabs button.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 4px;
-  border-radius: 99px 99px 0 0;
-  background: linear-gradient(90deg, #e20d38, #ff4f41);
 }
 
 .workspace {
@@ -1035,12 +994,6 @@ textarea::placeholder {
 
   .topbar p {
     font-size: 12px;
-  }
-
-  .tabs button {
-    min-width: 86px;
-    min-height: 42px;
-    padding: 8px 12px;
   }
 
   .panel {
