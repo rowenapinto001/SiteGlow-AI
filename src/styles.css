@@ -817,7 +817,7 @@ textarea::placeholder {
 }
 
 .preview-frame {
-  height: 300px;
+  height: 220px;
   overflow: auto;
   background: #ffffff;
 }
@@ -826,6 +826,27 @@ textarea::placeholder {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.preview-placeholder {
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 16px;
+  color: var(--muted);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.preview-placeholder strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.preview-placeholder span {
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 .result-empty {
@@ -1018,9 +1039,9 @@ textarea::placeholder {
 }
 
 .workspace.has-result .inline-result-panel .stacked-previews {
-  min-height: 420px;
+  min-height: 360px;
 }
 
 .workspace.has-result .inline-result-panel .preview-frame {
-  height: clamp(220px, 34vh, 360px);
+  height: clamp(170px, 28vh, 260px);
 }

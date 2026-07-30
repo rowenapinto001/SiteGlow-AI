@@ -198,7 +198,7 @@ export default function App() {
                 </div>
 
                 {capture ? (
-                  <ResultPreviews before={capture.dataUrl} after={afterDataUrl} />
+                  <ResultPreviews before={capture.dataUrl} after={afterDataUrl} isGeneratingAfter={stage === 'generating'} />
                 ) : (
                   <div className="result-empty">
                     <div>

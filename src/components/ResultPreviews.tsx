@@ -1,13 +1,18 @@
 interface ResultPreviewsProps {
   before: string;
   after?: string | null;
+  isGeneratingAfter?: boolean;
 }
 
-export function ResultPreviews({ before, after }: ResultPreviewsProps) {
+export function ResultPreviews({ before, after, isGeneratingAfter = false }: ResultPreviewsProps) {
   return (
-    <div className="stacked-previews" aria-label={after ? 'Before and after result previews' : 'Before result preview'}>
+    <div className="stacked-previews" aria-label="Before and after result previews">
       <PreviewCard title="Before" src={before} alt="Original full-page website screenshot" />
-      {after && <PreviewCard title="After" src={after} alt="AI-generated redesign concept" />}
+      {after ? (
+        <PreviewCard title="After" src={after} alt="AI-generated redesign concept" />
+      ) : (
+        <PreviewPlaceholder isGenerating={isGeneratingAfter} />
+      )}
     </div>
   );
 }
@@ -24,6 +29,22 @@ function PreviewCard({ title, src, alt }: PreviewCardProps) {
       <h3>{title}</h3>
       <div className="preview-frame">
         <img src={src} alt={alt} />
+      </div>
+    </section>
+  );
+}
+
+function PreviewPlaceholder({ isGenerating }: { isGenerating: boolean }) {
+  return (
+    <section className="preview-card" aria-label="After preview">
+      <h3>After</h3>
+      <div className="preview-placeholder">
+        <strong>{isGenerating ? 'Generating After' : 'After will appear here'}</strong>
+        <span>
+          {isGenerating
+            ? 'Creating the redesign concept now.'
+            : 'Run Capture & Generate to create the redesign.'}
+        </span>
       </div>
     </section>
   );
