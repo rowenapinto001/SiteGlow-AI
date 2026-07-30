@@ -17,4 +17,11 @@ describe('toSiteGlowError', () => {
     expect(error.code).toBe('unexpected_error');
     expect(error.message).toBe('Failed to fetch');
   });
+
+  it('maps Chrome error pages to a URL validation message', () => {
+    const error = toSiteGlowError(new Error('Frame with ID 0 is showing error page'));
+    expect(error.code).toBe('capture_invalid_url');
+    expect(error.message).toBe('Enter a valid public website URL.');
+    expect(error.detail).toMatch(/Check the URL/i);
+  });
 });
