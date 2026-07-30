@@ -1,4 +1,5 @@
 import { Download, Globe2, ImagePlus, Settings, WandSparkles } from 'lucide-react';
+import type { KeyboardEvent } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AiConfig } from './components/AiConfig';
 import { ResultPreviews } from './components/ResultPreviews';
@@ -93,6 +94,15 @@ export default function App() {
     }
   }
 
+  function submitUrlOnEnter(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key !== 'Enter' || !canGenerate) {
+      return;
+    }
+
+    event.preventDefault();
+    void runFlow();
+  }
+
   async function download(kind: 'before' | 'after') {
     const dataUrl = kind === 'before' ? capture?.dataUrl : afterDataUrl;
     const sourceUrl = capture?.url || url || 'siteglow.ai';
@@ -153,6 +163,7 @@ export default function App() {
                   placeholder="https://example.com"
                   value={url}
                   onChange={(event) => setUrl(event.target.value)}
+                  onKeyDown={submitUrlOnEnter}
                 />
               </div>
             </label>
