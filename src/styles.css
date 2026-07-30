@@ -801,8 +801,10 @@ textarea::placeholder {
 }
 
 .preview-card {
-  min-height: 0;
+  min-height: 210px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .preview-card h3 {
@@ -818,6 +820,8 @@ textarea::placeholder {
 
 .preview-frame {
   height: 190px;
+  min-height: 190px;
+  flex: 0 0 190px;
   overflow: auto;
   background: #ffffff;
 }
@@ -836,6 +840,7 @@ textarea::placeholder {
 }
 
 .preview-placeholder {
+  height: 100%;
   min-height: 100%;
   display: grid;
   place-items: center;
@@ -1051,4 +1056,6 @@ textarea::placeholder {
 
 .workspace.has-result .inline-result-panel .preview-frame {
   height: clamp(150px, 24vh, 220px);
+  min-height: 150px;
+  flex-basis: clamp(150px, 24vh, 220px);
 }
