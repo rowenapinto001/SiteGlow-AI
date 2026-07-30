@@ -673,10 +673,10 @@ textarea::placeholder {
 }
 
 .result-panel {
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
-  min-height: 260px;
+  min-height: 0;
 }
 
 .inline-result-panel {
@@ -765,7 +765,7 @@ textarea::placeholder {
 }
 
 .workspace.has-result .stacked-previews {
-  min-height: 420px;
+  min-height: 0;
 }
 
 .workspace.has-result .capture-meta {
