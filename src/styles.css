@@ -765,7 +765,7 @@ textarea::placeholder {
 }
 
 .workspace.has-result .stacked-previews {
-  min-height: 0;
+  min-height: auto;
 }
 
 .workspace.has-result .capture-meta {
@@ -789,8 +789,8 @@ textarea::placeholder {
 .stacked-previews {
   display: grid;
   gap: 10px;
-  min-height: 0;
-  flex: 1;
+  min-height: auto;
+  flex: 0 0 auto;
 }
 
 .preview-card,
@@ -1051,7 +1051,7 @@ textarea::placeholder {
 }
 
 .workspace.has-result .inline-result-panel .stacked-previews {
-  min-height: 360px;
+  min-height: auto;
 }
 
 .workspace.has-result .inline-result-panel .preview-frame {
