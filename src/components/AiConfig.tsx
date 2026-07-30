@@ -1,4 +1,4 @@
-import { CheckCircle2, KeyRound, PlugZap, RotateCcw, Save, Trash2 } from 'lucide-react';
+import { CheckCircle2, Database, Image, KeyRound, LockKeyhole, PlugZap, RotateCcw, Save, Trash2, UserRound } from 'lucide-react';
 import { useState } from 'react';
 import { sendToBackground } from '../lib/chromeClient';
 import {
@@ -109,69 +109,80 @@ export function AiConfig({ config, onConfigChange }: AiConfigProps) {
       <h2 id="ai-config-title" className="sr-only">Cloudflare connection</h2>
 
       <div className="field-grid">
-        <label className="field full">
-          <span>Cloudflare Account ID</span>
-          <input
-            value={cloudflareAccountId}
-            onChange={(event) => setCloudflareAccountId(event.target.value)}
-            spellCheck={false}
-            autoComplete="off"
-          />
-        </label>
-
-        <label className="field full">
-          <span>Workers AI API token</span>
-          <div className="input-with-icon">
-            <KeyRound size={18} aria-hidden="true" />
+        <div className="setting-card">
+          <label className="field full">
+            <span className="setting-label"><span className="setting-icon" aria-hidden="true"><UserRound size={20} /></span>Cloudflare Account ID</span>
+            <small>Your Cloudflare account identifier.</small>
             <input
-              type="password"
+              value={cloudflareAccountId}
+              onChange={(event) => setCloudflareAccountId(event.target.value)}
+              spellCheck={false}
               autoComplete="off"
-              placeholder={config.cloudflareTokenHint || 'Paste your Cloudflare Workers AI API token'}
-              value={cloudflareToken}
-              onChange={(event) => setCloudflareToken(event.target.value)}
             />
-          </div>
-          {config.cloudflareTokenHint && <small>Saved token: {config.cloudflareTokenHint}</small>}
-        </label>
-
-        <label className="field full">
-          <span>Cloudflare image model</span>
-          <input
-            list="cloudflare-models"
-            value={cloudflareModel}
-            onChange={(event) => setCloudflareModel(event.target.value)}
-            spellCheck={false}
-          />
-          <datalist id="cloudflare-models">
-            {CLOUDFLARE_IMAGE_MODELS.map((entry) => (
-              <option key={entry} value={entry} />
-            ))}
-          </datalist>
-        </label>
-
-        <fieldset className="storage-field">
-          <legend>API token storage</legend>
-          <label>
-            <input
-              type="radio"
-              name="storageMode"
-              value="session"
-              checked={storageMode === 'session'}
-              onChange={() => setStorageMode('session')}
-            />
-            Session only
           </label>
-          <label>
-            <input
-              type="radio"
-              name="storageMode"
-              value="local"
-              checked={storageMode === 'local'}
-              onChange={() => setStorageMode('local')}
-            />
-            Persistent local
+        </div>
+
+        <div className="setting-card">
+          <label className="field full">
+            <span className="setting-label"><span className="setting-icon" aria-hidden="true"><KeyRound size={20} /></span>Workers AI API token</span>
+            <small>Used to authenticate with Workers AI.</small>
+            <div className="input-with-icon">
+              <LockKeyhole size={18} aria-hidden="true" />
+              <input
+                type="password"
+                autoComplete="off"
+                placeholder={config.cloudflareTokenHint || 'Paste your Cloudflare Workers AI API token'}
+                value={cloudflareToken}
+                onChange={(event) => setCloudflareToken(event.target.value)}
+              />
+            </div>
+            {config.cloudflareTokenHint && <small>Saved token: {config.cloudflareTokenHint}</small>}
           </label>
-        </fieldset>
+        </div>
+
+        <div className="setting-card">
+          <label className="field full">
+            <span className="setting-label"><span className="setting-icon" aria-hidden="true"><Image size={20} /></span>Cloudflare image model</span>
+            <small>Select the Workers AI image model.</small>
+            <select
+              value={cloudflareModel}
+              onChange={(event) => setCloudflareModel(event.target.value)}
+            >
+              {CLOUDFLARE_IMAGE_MODELS.map((entry) => (
+                <option key={entry} value={entry}>{entry}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <div className="setting-card">
+          <fieldset className="storage-field">
+            <legend className="setting-label"><span className="setting-icon" aria-hidden="true"><Database size={20} /></span>API token storage</legend>
+            <small>Choose how to store your API token.</small>
+            <div className="storage-options">
+              <label>
+                <input
+                  type="radio"
+                  name="storageMode"
+                  value="session"
+                  checked={storageMode === 'session'}
+                  onChange={() => setStorageMode('session')}
+                />
+                Session only
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="storageMode"
+                  value="local"
+                  checked={storageMode === 'local'}
+                  onChange={() => setStorageMode('local')}
+                />
+                Persistent local
+              </label>
+            </div>
+          </fieldset>
+        </div>
       </div>
 
       {message && <div className="notice success"><CheckCircle2 size={18} />{message}</div>}
