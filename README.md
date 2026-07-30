@@ -1,5 +1,11 @@
 # SiteGlow AI
 
+[![CI](https://github.com/rowenapinto001/SiteGlow-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/rowenapinto001/SiteGlow-AI/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Chrome MV3](https://img.shields.io/badge/Chrome-MV3-ff4f41.svg)](public/manifest.json)
+[![Tech Stack](https://img.shields.io/badge/Tech-React%20%2B%20TypeScript-3178c6.svg)](#tech-stack)
+[![Status](https://img.shields.io/badge/Status-v0.1.0-f06292.svg)](https://github.com/rowenapinto001/SiteGlow-AI/releases/tag/v0.1.0)
+
 SiteGlow AI is a Chrome Manifest V3 side panel extension that captures a stitched full-page website screenshot, sends it to Cloudflare Workers AI, and displays the Before and After redesign concept in separate scrollable previews.
 
 The extension never hardcodes API tokens. Each user enters their own Cloudflare Workers AI credentials in the AI Configuration screen. Saved tokens are masked in the interface and are only sent to the official Cloudflare API.
@@ -9,6 +15,36 @@ The extension never hardcodes API tokens. Each user enters their own Cloudflare 
 [![SiteGlow AI demo video thumbnail](public/assets/siteglow-ai-thumbnail.png)](public/assets/siteglow-ai-demo.mp4)
 
 [Watch the SiteGlow AI demo video](public/assets/siteglow-ai-demo.mp4)
+
+## What it does
+
+SiteGlow AI lets users enter a public website URL, capture a full-page Before screenshot, generate an AI redesign concept, and review separate scrollable Before and After previews in the Chrome side panel.
+
+## Why I built this
+
+I wanted a faster way to explore website redesign ideas without touching the live site. SiteGlow turns a screenshot into a visual concept workflow that is easy to test, review, and download.
+
+## Features
+
+- Chrome Extension Manifest V3 side panel
+- Full-page website capture with stitched screenshots
+- Cloudflare Workers AI image generation
+- User-provided API token configuration
+- Separate scrollable Before and After previews
+- Before/After downloads
+- Session-only or persistent local credential storage
+- Friendly authentication, quota, model, and API errors
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Chrome Side Panel API
+- `chrome.tabs.captureVisibleTab`
+- Offscreen canvas stitching
+- Cloudflare Workers AI
+- Chrome Storage and Downloads APIs
 
 ## Setup
 
@@ -77,3 +113,7 @@ Never commit `.env`. It is ignored by git.
 - Very long pages may be scaled during stitching to keep the uploaded image within a practical canvas/API size.
 - Authentication, quota, model, and API errors are surfaced in the interface without logging or revealing the API token.
 - CI runs `npm ci`, `npm test`, `npm run build`, and `npm audit` on GitHub Actions.
+
+## License
+
+MIT
