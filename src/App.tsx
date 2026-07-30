@@ -145,7 +145,6 @@ export default function App() {
             <div className="panel-header">
               <div>
                 <p className="eyebrow">Website Capture</p>
-                <h2>Before screenshot</h2>
               </div>
               <div className="panel-accent" aria-hidden="true">
                 <ScanLine size={22} />
