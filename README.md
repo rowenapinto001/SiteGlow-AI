@@ -4,6 +4,12 @@ SiteGlow AI is a Chrome Manifest V3 side panel extension that captures a stitche
 
 The extension never hardcodes API tokens. Each user enters their own Cloudflare Workers AI credentials in the AI Configuration screen. Saved tokens are masked in the interface and are only sent to the official Cloudflare API.
 
+## Demo
+
+[![SiteGlow AI demo video thumbnail](public/assets/siteglow-ai-thumbnail.png)](public/assets/siteglow-ai-demo.mp4)
+
+[Watch the SiteGlow AI demo video](public/assets/siteglow-ai-demo.mp4)
+
 ## Setup
 
 ```bash
