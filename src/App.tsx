@@ -119,7 +119,7 @@ export default function App() {
       <header className="topbar">
         <div>
           <h1>SiteGlow AI<span aria-hidden="true">✦</span></h1>
-          <p>Cloudflare-powered website redesigns.</p>
+          <p>Website redesigns made simple.</p>
         </div>
         <div className="topbar-actions">
           <button title="Open AI settings" onClick={() => setView('config')} aria-label="Open AI settings">
