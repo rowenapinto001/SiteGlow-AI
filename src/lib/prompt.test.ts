@@ -14,5 +14,7 @@ describe('buildRedesignPrompt', () => {
     expect(prompt).toContain('Do not invent new copy');
     expect(prompt).toContain('not a poster');
     expect(prompt).toContain('Make it premium.');
+    expect(prompt).toContain('primary visual art direction');
+    expect(prompt).toContain('clearly visible through the page palette');
   });
 });
