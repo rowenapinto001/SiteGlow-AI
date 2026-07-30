@@ -44,7 +44,7 @@ function PreviewPlaceholder({ isGenerating }: { isGenerating: boolean }) {
           <span>
             {isGenerating
               ? 'Creating the redesign concept now.'
-              : 'Run Capture & Generate to create the redesign.'}
+              : 'Run Generate to create the redesign.'}
           </span>
         </div>
       </div>

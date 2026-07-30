@@ -181,6 +181,12 @@ export default function App() {
               </div>
             </label>
 
+            <div className="button-row generate-row">
+              <button className="primary" onClick={runFlow} disabled={!canGenerate}>
+                <ImagePlus size={18} /> Generate
+              </button>
+            </div>
+
             {(capture || stage !== 'idle') && (
               <div className="result-panel inline-result-panel" ref={resultPanelRef}>
                 <div className="panel-header">
@@ -213,14 +219,6 @@ export default function App() {
                 )}
 
                 {capture && (
-                  <div className="button-row generate-row">
-                    <button className="primary" onClick={runFlow} disabled={!canGenerate}>
-                      <ImagePlus size={18} /> Capture & Generate
-                    </button>
-                  </div>
-                )}
-
-                {capture && (
                   <div className="capture-meta">
                     <span>{capture.width} x {capture.height}</span>
                     <span>{capture.scaled ? 'Scaled for API limits' : 'Native stitched capture'}</span>
@@ -235,14 +233,6 @@ export default function App() {
               <div className="progress-line">
                 <span />
                 {stage === 'capturing' ? 'Capturing and stitching the full page...' : 'Generating the full-page redesign concept...'}
-              </div>
-            )}
-
-            {!capture && (
-              <div className="button-row">
-                <button className="primary" onClick={runFlow} disabled={!canGenerate}>
-                  <ImagePlus size={18} /> Capture & Generate
-                </button>
               </div>
             )}
 
