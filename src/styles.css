@@ -213,8 +213,7 @@ button.danger {
 }
 
 .topbar-actions,
-.button-row,
-.capture-meta {
+.button-row {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -471,8 +470,7 @@ button.danger {
   font-size: 12px;
 }
 
-.meta,
-.capture-meta span {
+.meta {
   color: var(--muted);
   font-size: 12px;
 }
@@ -768,10 +766,6 @@ textarea::placeholder {
   min-height: auto;
 }
 
-.workspace.has-result .capture-meta {
-  margin-top: 6px;
-}
-
 .button-row {
   gap: 10px;
 }
@@ -889,11 +883,6 @@ textarea::placeholder {
 .result-empty span {
   font-size: 13px;
   line-height: 1.4;
-}
-
-.capture-meta {
-  margin-top: 10px;
-  justify-content: space-between;
 }
 
 .app-shell > :last-child::after {

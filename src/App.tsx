@@ -24,7 +24,6 @@ export default function App() {
   const [instructions, setInstructions] = useState('');
   const [capture, setCapture] = useState<CapturedPage | null>(null);
   const [afterDataUrl, setAfterDataUrl] = useState<string | null>(null);
-  const [outputText, setOutputText] = useState<string | null>(null);
   const [stage, setStage] = useState<Stage>('idle');
   const [error, setError] = useState<SiteGlowError | null>(null);
   const resultPanelRef = useRef<HTMLDivElement>(null);
@@ -62,7 +61,6 @@ export default function App() {
     const targetUrl = url;
     const targetInstructions = instructions;
     setError(null);
-    setOutputText(null);
 
     try {
       setStage('capturing');
@@ -86,7 +84,6 @@ export default function App() {
           }
       });
       setAfterDataUrl(redesign.afterDataUrl);
-      setOutputText(formatResultMeta(redesign));
     } catch (caught) {
       setError(caught as SiteGlowError);
     } finally {
@@ -218,13 +215,6 @@ export default function App() {
                   </div>
                 )}
 
-                {capture && (
-                  <div className="capture-meta">
-                    <span>{capture.width} x {capture.height}</span>
-                    <span>{capture.scaled ? 'Scaled for API limits' : 'Native stitched capture'}</span>
-                    {outputText && <span>{outputText}</span>}
-                  </div>
-                )}
               </div>
             )}
 
@@ -241,16 +231,4 @@ export default function App() {
       )}
     </main>
   );
-}
-
-function formatResultMeta(result: RedesignResult): string | null {
-  if (result.outputText) {
-    return result.outputText;
-  }
-
-  if (result.providerUsed) {
-    return 'Generated with Cloudflare Workers AI.';
-  }
-
-  return result.outputText || null;
 }
