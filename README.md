@@ -35,7 +35,7 @@ For local development, use the built `dist` folder when testing Chrome extension
 2. Enter the Cloudflare Workers AI credentials.
 4. Choose session-only or persistent local storage.
 5. Confirm the image model, then Validate & Save.
-6. Return to Redesign, enter a public HTTP/HTTPS website URL, and optionally add redesign instructions.
+6. Return to Capture, enter a public HTTP/HTTPS website URL, and optionally add redesign instructions.
 7. Capture and generate the redesign concept.
 8. Compare with the slider, regenerate, download, reset, or update configuration.
 
@@ -53,6 +53,16 @@ Cloudflare Workers AI provides a daily free allocation on the Workers Free plan.
 8. Keep the default model `@cf/runwayml/stable-diffusion-v1-5-img2img`, then click **Validate & Save**.
 
 If you create a custom token manually, give it Workers AI permissions. Keep the token private and do not screenshot or share it.
+
+## Optional Local API Test
+
+The extension does not need a `.env` file in production. For local developer-only API checks, copy `.env.example` to `.env` and fill in your own Cloudflare values:
+
+```bash
+cp .env.example .env
+```
+
+Never commit `.env`. It is ignored by git.
 
 ## Notes
 
