@@ -2,7 +2,6 @@ import { Download, Globe2, ImagePlus, ScanLine, Settings, WandSparkles } from 'l
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AiConfig } from './components/AiConfig';
 import { ComparisonSlider } from './components/ComparisonSlider';
-import { StatusPill } from './components/StatusPill';
 import { hasChromeRuntime, sendToBackground } from './lib/chromeClient';
 import { extensionFromDataUrl, filenameFromUrl } from './lib/url';
 import type { CapturedPage, PublicConfig, RedesignResult, SiteGlowError } from './shared/types';
@@ -123,7 +122,6 @@ export default function App() {
           <p>Cloudflare-powered website redesigns.</p>
         </div>
         <div className="topbar-actions">
-          <StatusPill state={config.connectionState} />
           <button title="Open AI settings" onClick={() => setView('config')} aria-label="Open AI settings">
             <Settings size={18} />
           </button>

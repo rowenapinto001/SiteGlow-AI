@@ -662,30 +662,6 @@ textarea::placeholder {
   accent-color: var(--accent);
 }
 
-.status-pill {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 0 5px rgba(51, 183, 107, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.78);
-}
-
-.status-pill.active {
-  color: #0d5b48;
-  background: #c6f2d7;
-}
-
-.status-pill.inactive {
-  color: #7a2219;
-  background: #ffd0cc;
-}
-
-.status-pill.untested {
-  color: #7a4b00;
-  background: #ffe2b8;
-}
-
 .notice {
   border-radius: 12px;
   padding: 10px;
