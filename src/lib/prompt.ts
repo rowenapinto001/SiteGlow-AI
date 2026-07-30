@@ -3,9 +3,17 @@ export function buildRedesignPrompt(options: {
   pageTitle?: string;
   instructions?: string;
 }): string {
-  const userInstructions = options.instructions?.trim()
-    ? `User redesign direction: ${options.instructions.trim()}`
+  const trimmedInstructions = options.instructions?.trim();
+  const userInstructions = trimmedInstructions
+    ? `User redesign direction: ${trimmedInstructions}`
     : 'User redesign direction: Improve the page into a polished, modern, trustworthy web design while preserving its original content and intent.';
+  const visualDirection = trimmedInstructions
+    ? [
+      'Treat the user redesign direction as the primary visual art direction.',
+      `Make the requested direction clearly visible through the page palette, lighting, imagery treatment, backgrounds, accents, and overall mood: ${trimmedInstructions}.`,
+      'Apply the direction as a website redesign theme, while preserving the original content and page meaning.'
+    ].join('\n')
+    : 'Apply a refined modern visual theme while preserving the original content and page meaning.';
 
   return [
     'You are redesigning a public website screenshot into a single full-page concept image.',
@@ -13,6 +21,7 @@ export function buildRedesignPrompt(options: {
     `Source URL: ${options.url}`,
     options.pageTitle ? `Detected page title: ${options.pageTitle}` : '',
     userInstructions,
+    visualDirection,
     '',
     'Critical preservation rules:',
     '- Preserve the original website text, section order, information hierarchy, navigation meaning, calls to action, product/service claims, labels, prices, data, disclaimers, and footer content.',
