@@ -1,7 +1,7 @@
 import { Download, Globe2, ImagePlus, Settings, WandSparkles } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AiConfig } from './components/AiConfig';
-import { ComparisonSlider } from './components/ComparisonSlider';
+import { ResultPreviews } from './components/ResultPreviews';
 import { hasChromeRuntime, sendToBackground } from './lib/chromeClient';
 import { extensionFromDataUrl, filenameFromUrl } from './lib/url';
 import type { CapturedPage, PublicConfig, RedesignResult, SiteGlowError } from './shared/types';
@@ -186,12 +186,8 @@ export default function App() {
                   </div>
                 </div>
 
-                {afterDataUrl && capture ? (
-                  <ComparisonSlider before={capture.dataUrl} after={afterDataUrl} />
-                ) : capture ? (
-                  <div className="single-preview">
-                    <img src={capture.dataUrl} alt="Original full-page website screenshot" />
-                  </div>
+                {capture ? (
+                  <ResultPreviews before={capture.dataUrl} after={afterDataUrl} />
                 ) : (
                   <div className="result-empty">
                     <div>

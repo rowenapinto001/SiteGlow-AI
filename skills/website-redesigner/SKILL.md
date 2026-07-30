@@ -5,7 +5,7 @@ description: Use this skill when generating, prompting, reviewing, or improving 
 
 # Website Redesigner
 
-Use this skill for screenshot-driven website redesign concepts. It is designed for SiteGlow AI and similar workflows where a public website is captured as a full-page screenshot, sent to an image model such as Cloudflare Workers AI, and compared against the original with a before/after slider.
+Use this skill for screenshot-driven website redesign concepts. It is designed for SiteGlow AI and similar workflows where a public website is captured as a full-page screenshot, sent to an image model such as Cloudflare Workers AI, and compared against the original with before/after previews.
 
 The output is a concept image unless the user explicitly asks for implementation code. The live website must not be modified.
 

@@ -1,6 +1,6 @@
 # SiteGlow AI
 
-SiteGlow AI is a Chrome Manifest V3 side panel extension that captures a stitched full-page website screenshot, sends it to Cloudflare Workers AI, and displays an AI redesign concept with a draggable before/after slider.
+SiteGlow AI is a Chrome Manifest V3 side panel extension that captures a stitched full-page website screenshot, sends it to Cloudflare Workers AI, and displays the Before and After redesign concept in separate scrollable previews.
 
 The extension never hardcodes API tokens. Each user enters their own Cloudflare Workers AI credentials in the AI Configuration screen. Saved tokens are masked in the interface and are only sent to the official Cloudflare API.
 
@@ -38,7 +38,7 @@ For local development, use the built `dist` folder when testing Chrome extension
 5. Confirm the image model, then Validate & Save.
 6. Return to Capture, enter a public HTTP/HTTPS website URL, and optionally add redesign instructions.
 7. Capture and generate the redesign concept.
-8. Compare the Before and After result with the slider, download images, or update configuration.
+8. Review the Before and After previews, download images, or update configuration.
 
 ## Cloudflare Workers AI Free Setup
 
