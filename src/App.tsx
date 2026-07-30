@@ -213,6 +213,14 @@ export default function App() {
                 )}
 
                 {capture && (
+                  <div className="button-row generate-row">
+                    <button className="primary" onClick={runFlow} disabled={!canGenerate}>
+                      <ImagePlus size={18} /> Capture & Generate
+                    </button>
+                  </div>
+                )}
+
+                {capture && (
                   <div className="capture-meta">
                     <span>{capture.width} x {capture.height}</span>
                     <span>{capture.scaled ? 'Scaled for API limits' : 'Native stitched capture'}</span>
@@ -230,11 +238,13 @@ export default function App() {
               </div>
             )}
 
-            <div className="button-row">
-              <button className="primary" onClick={runFlow} disabled={!canGenerate}>
-                <ImagePlus size={18} /> Capture & Generate
-              </button>
-            </div>
+            {!capture && (
+              <div className="button-row">
+                <button className="primary" onClick={runFlow} disabled={!canGenerate}>
+                  <ImagePlus size={18} /> Capture & Generate
+                </button>
+              </div>
+            )}
 
           </div>
         </section>

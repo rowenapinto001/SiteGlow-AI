@@ -786,6 +786,10 @@ textarea::placeholder {
   min-height: 40px;
 }
 
+.generate-row {
+  margin-top: 12px;
+}
+
 .stacked-previews {
   display: grid;
   gap: 10px;
