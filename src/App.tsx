@@ -1,4 +1,4 @@
-import { Download, Globe2, ImagePlus, ScanLine, Settings, WandSparkles } from 'lucide-react';
+import { Download, Globe2, ImagePlus, Settings, WandSparkles } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AiConfig } from './components/AiConfig';
 import { ComparisonSlider } from './components/ComparisonSlider';
@@ -140,9 +140,6 @@ export default function App() {
             <div className="panel-header">
               <div>
                 <p className="eyebrow">Website Capture</p>
-              </div>
-              <div className="panel-accent" aria-hidden="true">
-                <ScanLine size={22} />
               </div>
               {capture && <span className="meta">{capture.slices} slices</span>}
             </div>
