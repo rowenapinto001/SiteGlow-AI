@@ -8,7 +8,7 @@ import type { CapturedPage, PublicConfig, RedesignResult, SiteGlowError } from '
 import { DEFAULT_CLOUDFLARE_MODEL } from './shared/types';
 
 type Stage = 'idle' | 'capturing' | 'generating';
-type View = 'redesign' | 'config';
+type View = 'capture' | 'config';
 
 const emptyConfig: PublicConfig = {
   cloudflareModel: DEFAULT_CLOUDFLARE_MODEL,
@@ -17,7 +17,7 @@ const emptyConfig: PublicConfig = {
 };
 
 export default function App() {
-  const [view, setView] = useState<View>('redesign');
+  const [view, setView] = useState<View>('capture');
   const [config, setConfig] = useState<PublicConfig>(emptyConfig);
   const [url, setUrl] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -29,7 +29,7 @@ export default function App() {
   const resultPanelRef = useRef<HTMLDivElement>(null);
 
   const canGenerate = useMemo(
-    () => config.connectionState === 'active' && url.trim() && stage === 'idle',
+    () => Boolean(config.connectionState === 'active' && url.trim() && stage === 'idle'),
     [config.connectionState, stage, url]
   );
 
@@ -57,23 +57,20 @@ export default function App() {
     }
   }, [afterDataUrl]);
 
-  async function runFlow(regenerate = false) {
+  async function runFlow() {
     const targetUrl = url;
     const targetInstructions = instructions;
     setError(null);
     setOutputText(null);
 
     try {
-      let currentCapture = capture;
-      if (!regenerate || !currentCapture) {
-        setStage('capturing');
-        currentCapture = await sendToBackground<CapturedPage>({
-          type: 'CAPTURE_SITE',
-          payload: { url: targetUrl }
-        });
-        setCapture(currentCapture);
-        setAfterDataUrl(null);
-      }
+      setStage('capturing');
+      const currentCapture = await sendToBackground<CapturedPage>({
+        type: 'CAPTURE_SITE',
+        payload: { url: targetUrl }
+      });
+      setCapture(currentCapture);
+      setAfterDataUrl(null);
 
       setStage('generating');
       const redesign = await sendToBackground<RedesignResult>({
@@ -129,11 +126,11 @@ export default function App() {
       </header>
 
       <nav className="tabs" aria-label="SiteGlow views">
+        <button className={view === 'capture' ? 'active' : ''} onClick={() => setView('capture')}>
+          <WandSparkles size={18} /> Capture
+        </button>
         <button className={view === 'config' ? 'active' : ''} onClick={() => setView('config')}>
           <Settings size={18} /> AI
-        </button>
-        <button className={view === 'redesign' ? 'active' : ''} onClick={() => setView('redesign')}>
-          <WandSparkles size={18} /> Capture
         </button>
       </nav>
 
@@ -233,7 +230,7 @@ export default function App() {
             )}
 
             <div className="button-row">
-              <button className="primary" onClick={() => runFlow(false)} disabled={!canGenerate}>
+              <button className="primary" onClick={runFlow} disabled={!canGenerate}>
                 <ImagePlus size={18} /> Capture & Generate
               </button>
             </div>

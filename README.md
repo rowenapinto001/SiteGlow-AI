@@ -31,13 +31,14 @@ For local development, use the built `dist` folder when testing Chrome extension
 
 ## Usage
 
-1. Open the AI tab.
-2. Enter the Cloudflare Workers AI credentials.
+1. Open SiteGlow AI. The Capture tab is the default starting point.
+2. Open the AI tab when credentials need to be added or changed.
+3. Enter the Cloudflare Workers AI credentials.
 4. Choose session-only or persistent local storage.
 5. Confirm the image model, then Validate & Save.
 6. Return to Capture, enter a public HTTP/HTTPS website URL, and optionally add redesign instructions.
 7. Capture and generate the redesign concept.
-8. Compare with the slider, regenerate, download, reset, or update configuration.
+8. Compare the Before and After result with the slider, download images, or update configuration.
 
 ## Cloudflare Workers AI Free Setup
 
