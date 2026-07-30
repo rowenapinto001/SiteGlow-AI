@@ -1,4 +1,4 @@
-import { Download, Globe2, ImagePlus, RefreshCw, RotateCcw, ScanLine, Settings, WandSparkles } from 'lucide-react';
+import { Download, Globe2, ImagePlus, ScanLine, Settings, WandSparkles } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AiConfig } from './components/AiConfig';
 import { ComparisonSlider } from './components/ComparisonSlider';
@@ -113,14 +113,6 @@ export default function App() {
     } catch (caught) {
       setError(caught as SiteGlowError);
     }
-  }
-
-  function reset() {
-    setCapture(null);
-    setAfterDataUrl(null);
-    setOutputText(null);
-    setError(null);
-    setStage('idle');
   }
 
   return (
@@ -246,12 +238,6 @@ export default function App() {
             <div className="button-row">
               <button className="primary" onClick={() => runFlow(false)} disabled={!canGenerate}>
                 <ImagePlus size={18} /> Capture & Generate
-              </button>
-              <button onClick={() => runFlow(true)} disabled={!capture || stage !== 'idle' || config.connectionState !== 'active'}>
-                <RefreshCw size={18} /> Regenerate
-              </button>
-              <button onClick={reset} disabled={stage !== 'idle'}>
-                <RotateCcw size={18} /> Reset
               </button>
             </div>
 
