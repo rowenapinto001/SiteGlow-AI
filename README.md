@@ -6,15 +6,56 @@
 [![Tech Stack](https://img.shields.io/badge/Tech-React%20%2B%20TypeScript-3178c6.svg)](#tech-stack)
 [![Status](https://img.shields.io/badge/Status-v0.1.0-f06292.svg)](https://github.com/rowenapinto001/SiteGlow-AI/releases/tag/v0.1.0)
 
+
+<!-- media:start -->
+
+<p align="center">
+  <img src="docs/media/logo.png" width="96" alt="SiteGlow AI logo">
+</p>
+
+<h3 align="center">See the redesign before you build it.</h3>
+
+<p align="center">
+  <a href="docs/media/siteglow-ai-demo.mp4">
+    <img src="docs/media/demo-thumbnail.webp" width="640" alt="Watch the SiteGlow AI demo">
+  </a>
+  <br>
+  <a href="docs/media/siteglow-ai-demo.mp4"><b>Watch the demo</b></a>
+</p>
+
+## Screenshots
+
+![Any site, captured whole.](docs/media/1-capture.webp)
+
+<sub>Any site, captured whole.</sub>
+
+<details>
+<summary><b>See 2 more</b></summary>
+
+### Config
+
+![Your own AI key, your own costs.](docs/media/2-config.webp)
+
+<sub>Your own AI key, your own costs.</sub>
+
+### Brief
+
+![Steer the redesign.](docs/media/3-brief.webp)
+
+<sub>Steer the redesign.</sub>
+
+</details>
+
+<sub>Every screenshot is captured from the real extension running in Chrome, not
+mocked up, so they cannot drift from what the product actually does. Regenerate
+them with the tooling in the store-publishing workspace.</sub>
+
+<!-- media:end -->
+
 SiteGlow AI is a Chrome Manifest V3 side panel extension that captures a stitched full-page website screenshot, sends it to Cloudflare Workers AI, and displays the Before and After redesign concept in separate scrollable previews.
 
 The extension never hardcodes API tokens. Each user enters their own Cloudflare Workers AI credentials in the AI Configuration screen. Saved tokens are masked in the interface and are only sent to the official Cloudflare API.
 
-## Demo
-
-[![SiteGlow AI demo video thumbnail](public/assets/siteglow-ai-thumbnail.png)](public/assets/siteglow-ai-demo.mp4)
-
-[Watch the SiteGlow AI demo video](public/assets/siteglow-ai-demo.mp4)
 
 ## What it does
 

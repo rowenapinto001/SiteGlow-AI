@@ -1,0 +1,37 @@
+name: Bug report
+description: Report a problem.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the extension
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: input
+    id: chrome
+    attributes:
+      label: Chrome version
+      placeholder: "e.g. 131.0.6778.86"
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: "See chrome://extensions"
