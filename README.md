@@ -25,22 +25,28 @@
 
 ## Screenshots
 
-![Any site, captured whole.](docs/media/1-capture.webp)
+![Before and after, side by side.](docs/media/1-compare.webp)
+
+<sub>Before and after, side by side.</sub>
+
+<details>
+<summary><b>See 3 more</b></summary>
+
+### Capture
+
+![Any site, captured whole.](docs/media/2-capture.webp)
 
 <sub>Any site, captured whole.</sub>
 
-<details>
-<summary><b>See 2 more</b></summary>
-
 ### Config
 
-![Your own AI key, your own costs.](docs/media/2-config.webp)
+![Your own AI key, your own costs.](docs/media/3-config.webp)
 
 <sub>Your own AI key, your own costs.</sub>
 
 ### Brief
 
-![Steer the redesign.](docs/media/3-brief.webp)
+![Steer the redesign.](docs/media/4-brief.webp)
 
 <sub>Steer the redesign.</sub>
 
