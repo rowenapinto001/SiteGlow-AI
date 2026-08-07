@@ -136,8 +136,8 @@ async function captureWebsite(inputUrl: string): Promise<CapturedPage> {
 
     for (const y of yPositions) {
       await scrollTabTo(tab.id, y);
-      await sleep(450);
-      const dataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
+      await sleep(CAPTURE_INTERVAL_MS);
+      const dataUrl = await captureVisible(tab.windowId);
       slices.push({
         dataUrl,
         y,
@@ -284,6 +284,34 @@ async function downloadImage(dataUrl: string, filename: string) {
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Chrome caps captureVisibleTab at MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND,
+ * which is two per second, so calls must be at least 500ms apart. This was
+ * 450ms, under the limit by just enough that a full-page capture failed on any
+ * page tall enough to need several slices:
+ *
+ *   This request exceeds the MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND quota.
+ */
+const CAPTURE_INTERVAL_MS = 600;
+
+/**
+ * Even at a safe interval the quota is shared across the whole window, so
+ * anything else capturing at the same time can still trip it. Back off and
+ * retry rather than failing the entire capture on one slice.
+ */
+async function captureVisible(windowId: number, attempt = 0): Promise<string> {
+  try {
+    return await chrome.tabs.captureVisibleTab(windowId, { format: 'png' });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    if (attempt < 3 && /quota|MAX_CAPTURE_VISIBLE_TAB/i.test(message)) {
+      await sleep(CAPTURE_INTERVAL_MS * (attempt + 2));
+      return captureVisible(windowId, attempt + 1);
+    }
+    throw error;
+  }
 }
 
 export type MessageResult<T> = BackgroundResponse<T>;
