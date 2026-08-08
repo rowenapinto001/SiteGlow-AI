@@ -161,6 +161,11 @@ Never commit `.env`. It is ignored by git.
 - Authentication, quota, model, and API errors are surfaced in the interface without logging or revealing the API token.
 - CI runs `npm ci`, `npm test`, `npm run build`, and `npm audit` on GitHub Actions.
 
+## Privacy
+
+No accounts, no analytics, and nothing about you is collected.
+Full policy: <https://privacy.signalizeai.org/siteglow-ai>
+
 ## License
 
 MIT
