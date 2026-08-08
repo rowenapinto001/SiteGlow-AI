@@ -24,9 +24,21 @@ const fallbackConfig: StoredConfig = {
   connectionState: 'untested'
 };
 
-export async function getPublicConfig(): Promise<PublicConfig> {
+/**
+ * Read the stored config, filled in from the defaults.
+ *
+ * chrome.storage.local.get hands back unknown values, which is honest: what is
+ * on disk is whatever an older version wrote. The cast belongs here, once,
+ * rather than at each of the three call sites.
+ */
+async function readConfig(): Promise<StoredConfig> {
   const stored = await chrome.storage.local.get(CONFIG_KEY);
-  const config = { ...fallbackConfig, ...stored[CONFIG_KEY] } as StoredConfig;
+  const saved = stored[CONFIG_KEY] as Partial<StoredConfig> | undefined;
+  return { ...fallbackConfig, ...saved } as StoredConfig;
+}
+
+export async function getPublicConfig(): Promise<PublicConfig> {
+  const config = await readConfig();
   const cloudflareToken = await getCloudflareToken(config.storageMode);
 
   return {
@@ -81,8 +93,7 @@ export async function deleteApiKey(): Promise<PublicConfig> {
   await chrome.storage.session.remove(CLOUDFLARE_TOKEN_KEY);
   await chrome.storage.local.remove(CLOUDFLARE_TOKEN_KEY);
 
-  const stored = await chrome.storage.local.get(CONFIG_KEY);
-  const config = { ...fallbackConfig, ...stored[CONFIG_KEY] } as StoredConfig;
+  const config = await readConfig();
   const {
     cloudflareTokenHint: _cloudflareTokenHint,
     lastValidatedAt: _lastValidatedAt,
@@ -99,8 +110,7 @@ export async function deleteApiKey(): Promise<PublicConfig> {
 }
 
 export async function markConnectionInactive(): Promise<void> {
-  const stored = await chrome.storage.local.get(CONFIG_KEY);
-  const config = { ...fallbackConfig, ...stored[CONFIG_KEY] } as StoredConfig;
+  const config = await readConfig();
   await chrome.storage.local.set({ [CONFIG_KEY]: { ...config, connectionState: 'inactive' } });
 }
 
